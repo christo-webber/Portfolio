@@ -1,0 +1,741 @@
+/*
+ * styles.css â€” all visual styling for the dashboard.
+ * Colors, fonts, and corner sizes are defined once below and reused everywhere.
+ */
+
+:root {
+  /* Colors */
+  --color-header: #123021;
+  --color-header-hover: rgba(255, 255, 255, 0.12);
+  --color-page: #fcfcfc;
+  --color-surface: #fcfcfc;
+  --color-input: #ffffff;
+  --color-nav: #f2f2f2;
+  --color-nav-hover: #e6e6e6;
+  --color-text: #212223;
+  --color-text-muted: #5f6062;
+  --color-border: #d2d2d2;
+  --color-input-border: #747578;
+  --color-divider: #a7a8aa;
+  --color-brand-orange: #d64000;
+  --color-link: #0b5cad;
+  --color-focus: #0b5cad;
+  --color-success: #387c2b;
+  --color-warning: #b33a00;
+  --color-error: #dc0a0a;
+  --color-track: #e8ebee;
+  --color-secondary-hover: #edf3ef;
+
+  /* Fonts */
+  --font-body: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Clario", "Helvetica Neue", Arial, sans-serif;
+
+  /* Corners */
+  --radius-card: 8px;
+  --radius-input: 4px;
+  --radius-pill: 9999px;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-page);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+p,
+ol,
+ul {
+  margin: 0;
+}
+
+ol,
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* ---------- App frame ---------- */
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-body {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.app-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ---------- Top bar ---------- */
+
+.product-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 59px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  background-color: var(--color-header);
+  color: #ffffff;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.brand-mark {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+  stroke: none;
+}
+
+.brand-tm {
+  font-size: 9px;
+  font-weight: 400;
+  margin-left: 1px;
+  vertical-align: super;
+  line-height: 0;
+}
+
+.brand-product {
+  margin-left: 4px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-divider {
+  width: 1px;
+  height: 40px;
+  margin: 0 8px;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.icon-button {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--radius-input);
+  background: transparent;
+  color: #ffffff;
+}
+
+.icon-button:hover {
+  background-color: var(--color-header-hover);
+}
+
+.icon-button:focus-visible {
+  outline-color: #ffffff;
+}
+
+/* ---------- Side navigation ---------- */
+
+.side-nav {
+  width: 240px;
+  flex-shrink: 0;
+  background-color: var(--color-nav);
+  box-shadow: inset -1px 0 0 var(--color-border);
+  transition: width 200ms ease;
+  overflow: hidden;
+}
+
+.side-nav-top {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-toggle {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--radius-input);
+  background: transparent;
+  color: var(--color-text);
+}
+
+.nav-toggle:hover {
+  background-color: var(--color-nav-hover);
+}
+
+.nav-toggle .icon-expand {
+  display: none;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 0 8px;
+  border-radius: var(--radius-input);
+  color: var(--color-text);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  white-space: nowrap;
+}
+
+.nav-item svg {
+  width: 18px;
+  height: 18px;
+}
+
+.nav-item:hover {
+  background-color: var(--color-nav-hover);
+}
+
+.nav-item.is-current {
+  font-weight: 600;
+}
+
+.nav-item.is-current svg {
+  color: var(--color-brand-orange);
+}
+
+/* Collapsed side navigation: a narrow icon-only rail. */
+.app-body.nav-collapsed .side-nav {
+  width: 56px;
+}
+
+.app-body.nav-collapsed .side-nav-top {
+  justify-content: center;
+}
+
+.app-body.nav-collapsed .nav-toggle .icon-collapse {
+  display: none;
+}
+
+.app-body.nav-collapsed .nav-toggle .icon-expand {
+  display: block;
+}
+
+.app-body.nav-collapsed .nav-item {
+  justify-content: center;
+  padding: 0;
+}
+
+.app-body.nav-collapsed .nav-label {
+  display: none;
+}
+
+/* ---------- Breadcrumb ---------- */
+
+.breadcrumb {
+  padding: 8px 24px 0;
+  font-size: 14px;
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.breadcrumb li + li::before {
+  content: "/";
+  margin: 0 8px;
+  color: var(--color-text-muted);
+}
+
+.breadcrumb a {
+  color: var(--color-link);
+}
+
+.breadcrumb [aria-current="page"] {
+  font-weight: 600;
+}
+
+/* ---------- Page layout ---------- */
+
+.dash {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 24px 64px;
+}
+
+.dash-head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.group-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ---------- Text styles ---------- */
+
+.eyebrow {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.eyebrow-muted {
+  color: var(--color-text-muted);
+}
+
+.page-title {
+  font-family: var(--font-heading);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.body-md {
+  font-size: 16px;
+}
+
+.body-sm {
+  font-size: 14px;
+}
+
+.body-xs {
+  font-size: 12px;
+}
+
+.metric-md {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.metric-lg {
+  font-family: var(--font-heading);
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.big-number {
+  font-family: var(--font-heading);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.big-number-suffix {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  margin-left: 4px;
+}
+
+/* ---------- Cards ---------- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 24px 28px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+}
+
+.group-card {
+  gap: 0;
+}
+
+.group-card .card-title {
+  margin: 4px 0 20px;
+}
+
+/* ---------- Sprint progress card ---------- */
+
+.progress-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.progress-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.progress-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.summary-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.progress-labels {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.progress-track {
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-track);
+  overflow: hidden;
+}
+
+/* The green fill grows as hours are logged; a soft highlight sweeps across it. */
+.progress-fill {
+  width: 0;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-success);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 40% 100%;
+  background-repeat: no-repeat;
+  transition: width 300ms ease, background-color 300ms ease;
+  animation: progress-sheen 1.6s linear infinite;
+}
+
+.progress-fill.is-over {
+  background-color: var(--color-error);
+}
+
+@keyframes progress-sheen {
+  from {
+    background-position: -40% 0;
+  }
+  to {
+    background-position: 140% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill {
+    animation: none;
+    background-image: none;
+    transition: none;
+  }
+}
+
+/* ---------- Buttons ---------- */
+
+.button-secondary {
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  border: 1px solid var(--color-header);
+  border-radius: var(--radius-input);
+  background-color: transparent;
+  color: var(--color-header);
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.button-secondary svg {
+  width: 18px;
+  height: 18px;
+}
+
+.button-secondary:hover {
+  background-color: var(--color-secondary-hover);
+}
+
+/* ---------- Summary cards ---------- */
+
+.kpi-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.kpi-card {
+  gap: 20px;
+}
+
+.kpi-value-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.badge.is-warning {
+  background-color: var(--color-warning);
+}
+
+.badge.is-success {
+  background-color: var(--color-success);
+}
+
+.badge.is-error {
+  background-color: var(--color-error);
+}
+
+/* ---------- Form fields ---------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.input {
+  height: 42px;
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius-input);
+  background-color: var(--color-input);
+  font-size: 16px;
+}
+
+.input:hover {
+  border-color: var(--color-text);
+}
+
+.input:focus-visible {
+  outline-offset: 1px;
+}
+
+.input-hours {
+  width: 116px;
+}
+
+/* ---------- Ticket rows ---------- */
+
+.worklist {
+  display: flex;
+  flex-direction: column;
+}
+
+.worklist-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  border-top: 1px solid var(--color-divider);
+}
+
+.worklist-row:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.worklist-row:last-child {
+  padding-bottom: 0;
+}
+
+.field-title {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.worklist-hours {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  padding: 24px 32px;
+  background-color: var(--color-nav);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand-footer {
+  color: var(--color-text);
+}
+
+.brand-footer .brand-mark {
+  color: var(--color-brand-orange);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 14px;
+}
+
+.footer-links a {
+  color: var(--color-link);
+}
+
+.footer-copyright {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 760px) {
+  .product-header {
+    padding: 0 16px;
+  }
+
+  .brand-product {
+    display: none;
+  }
+
+  .side-nav {
+    display: none;
+  }
+
+  .worklist-row {
+    flex-wrap: wrap;
+  }
+
+  .field-title {
+    flex-basis: 100%;
+  }
+
+  .input-hours {
+    width: 100px;
+  }
+}
