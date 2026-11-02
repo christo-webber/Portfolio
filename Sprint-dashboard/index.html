@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123021">
+  <!-- The tab title is filled in from content.js (PAGE_TITLE). -->
+  <title></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!--
+    Page structure only. Every visible word comes from content.js:
+    an element with data-text="NAME" shows the text of the NAME variable,
+    and data-aria="NAME" sets its screen reader label.
+  -->
+  <div class="app-shell">
+
+    <!-- Top bar -->
+    <header class="product-header" data-aria="HEADER_LABEL">
+      <a class="brand" href="#">
+        <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="21" cy="12" r="1.5"/><circle cx="19.79" cy="16.5" r="1.5"/>
+          <circle cx="16.5" cy="19.79" r="1.5"/><circle cx="12" cy="21" r="1.5"/>
+          <circle cx="7.5" cy="19.79" r="1.5"/><circle cx="4.21" cy="16.5" r="1.5"/>
+          <circle cx="3" cy="12" r="1.5"/><circle cx="4.21" cy="7.5" r="1.5"/>
+          <circle cx="7.5" cy="4.21" r="1.5"/><circle cx="12" cy="3" r="1.5"/>
+          <circle cx="16.5" cy="4.21" r="1.5"/><circle cx="19.79" cy="7.5" r="1.5"/>
+          <circle cx="12" cy="12" r="1.1"/><circle cx="16" cy="12" r="1"/>
+          <circle cx="8" cy="12" r="1"/><circle cx="12" cy="8" r="1"/><circle cx="12" cy="16" r="1"/>
+        </svg>
+        <span class="brand-company"><span data-text="COMPANY_NAME"></span><sup class="brand-tm" data-text="TRADEMARK_SYMBOL"></sup></span>
+        <span class="brand-product" data-text="PRODUCT_NAME"></span>
+      </a>
+
+      <div class="header-actions">
+        <button class="icon-button" type="button" data-aria="HEADER_SEARCH_LABEL">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <span class="header-divider" aria-hidden="true"></span>
+        <button class="icon-button" type="button" data-aria="HEADER_HELP_LABEL">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.7v.4"/><path d="M12 16.8h.01"/></svg>
+        </button>
+        <button class="icon-button" type="button" data-aria="HEADER_NOTIFICATIONS_LABEL">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 8 2.5 8h-17S6 15 6 9"/><path d="M10.3 20.5a1.9 1.9 0 0 0 3.4 0"/></svg>
+        </button>
+        <button class="icon-button" type="button" data-aria="HEADER_PROFILE_LABEL">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.4 18.3a6.5 6.5 0 0 1 11.2 0"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="app-body" id="app-body">
+
+      <!-- Side navigation -->
+      <nav class="side-nav" data-aria="NAV_LABEL">
+        <div class="side-nav-top">
+          <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="true">
+            <svg class="icon-collapse" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5v14"/><path d="M20 12H8"/><path d="m12 8-4 4 4 4"/></svg>
+            <svg class="icon-expand" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5v14"/><path d="M8 12h12"/><path d="m16 8 4 4-4 4"/></svg>
+          </button>
+        </div>
+        <ul class="nav-list">
+          <li>
+            <a class="nav-item is-current" href="#worklist" aria-current="page">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 6h10M11 12h10M11 18h10"/><path d="m3 6 1.5 1.5L7 5"/><path d="m3 12 1.5 1.5L7 11"/><path d="m3 18 1.5 1.5L7 17"/></svg>
+              <span class="nav-label" data-text="NAV_MY_WORK"></span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-item" href="#boards">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="8" rx="1"/><rect x="14" y="4" width="6" height="5" rx="1"/><rect x="14" y="13" width="6" height="7" rx="1"/><rect x="4" y="16" width="6" height="4" rx="1"/></svg>
+              <span class="nav-label" data-text="NAV_BOARDS"></span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-item" href="#sprints">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h13l-2.5 4.5L18 13H5"/></svg>
+              <span class="nav-label" data-text="NAV_SPRINTS"></span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-item" href="#reports">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><rect x="5" y="12" width="3" height="6"/><rect x="10.5" y="5" width="3" height="13"/><rect x="16" y="9" width="3" height="9"/></svg>
+              <span class="nav-label" data-text="NAV_REPORTS"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main content -->
+      <main class="app-content" id="worklist">
+        <nav class="breadcrumb" data-aria="BREADCRUMB_LABEL">
+          <ol>
+            <li><a href="#" data-text="BREADCRUMB_HOME"></a></li>
+            <li aria-current="page" data-text="BREADCRUMB_CURRENT"></li>
+          </ol>
+        </nav>
+
+        <div class="dash">
+
+          <!-- Page heading -->
+          <div class="dash-head">
+            <p class="eyebrow" data-text="SPRINT_EYEBROW"></p>
+            <h1 class="page-title" data-text="SPRINT_TITLE"></h1>
+            <p class="body-md" id="sprint-intro"></p>
+          </div>
+
+          <!-- Sprint progress card -->
+          <section class="card" aria-labelledby="progress-card-title">
+            <h2 class="card-title" id="progress-card-title" data-text="PROGRESS_CARD_TITLE"></h2>
+
+            <div class="progress-banner">
+              <div class="progress-headline">
+                <div class="summary-metric">
+                  <p class="big-number">
+                    <span id="total-hours"></span>
+                    <span class="big-number-suffix" id="total-suffix"></span>
+                  </p>
+                  <p class="body-sm" id="capacity-text"></p>
+                </div>
+
+                <div class="progress">
+                  <div class="progress-labels">
+                    <span class="body-md" id="progress-label" data-text="PROGRESS_BAR_LABEL"></span>
+                    <span class="body-xs" id="progress-complete"></span>
+                  </div>
+                  <div class="progress-track" id="progress-track" role="progressbar" aria-valuemin="0" aria-labelledby="progress-label">
+                    <div class="progress-fill" id="progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="progress-controls">
+                <div class="summary-metric">
+                  <p class="eyebrow" data-text="TARGET_EYEBROW"></p>
+                  <label class="field">
+                    <span class="field-label" data-text="TARGET_FIELD_LABEL"></span>
+                    <input class="input input-hours" id="target-input" type="number" min="0" step="1" inputmode="decimal">
+                  </label>
+                </div>
+                <div class="summary-metric">
+                  <p class="eyebrow" data-text="REMAINING_EYEBROW"></p>
+                  <p class="metric-md" id="remaining-value"></p>
+                </div>
+                <button class="button-secondary" id="reset-button" type="button">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7L4 8.6"/><path d="M4 4v4.6h4.6"/></svg>
+                  <span data-text="RESET_BUTTON"></span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Summary cards -->
+          <div class="kpi-grid">
+            <section class="card kpi-card">
+              <h2 class="eyebrow eyebrow-muted" data-text="KPI_HOURS_TITLE"></h2>
+              <p class="kpi-value-row">
+                <span class="metric-lg" id="kpi-hours"></span>
+                <span class="body-xs" id="kpi-hours-detail"></span>
+              </p>
+            </section>
+            <section class="card kpi-card">
+              <h2 class="eyebrow eyebrow-muted" data-text="KPI_CAPACITY_TITLE"></h2>
+              <p class="kpi-value-row">
+                <span class="metric-lg" id="kpi-capacity"></span>
+                <span class="badge" id="kpi-status"></span>
+              </p>
+            </section>
+            <section class="card kpi-card">
+              <h2 class="eyebrow eyebrow-muted" data-text="KPI_REMAINING_TITLE"></h2>
+              <p class="kpi-value-row">
+                <span class="metric-lg" id="kpi-remaining"></span>
+                <span class="body-xs" data-text="KPI_REMAINING_DETAIL"></span>
+              </p>
+            </section>
+            <section class="card kpi-card">
+              <h2 class="eyebrow eyebrow-muted" data-text="KPI_ACTIVE_TITLE"></h2>
+              <p class="kpi-value-row">
+                <span class="metric-lg" id="kpi-active"></span>
+                <span class="body-xs" id="kpi-active-detail"></span>
+              </p>
+            </section>
+          </div>
+
+          <!-- Ticket group cards (DIGITAL, DMK) are added here by app.js -->
+          <div class="group-list" id="group-list"></div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-top">
+        <a class="brand brand-footer" href="#">
+          <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="21" cy="12" r="1.5"/><circle cx="19.79" cy="16.5" r="1.5"/>
+            <circle cx="16.5" cy="19.79" r="1.5"/><circle cx="12" cy="21" r="1.5"/>
+            <circle cx="7.5" cy="19.79" r="1.5"/><circle cx="4.21" cy="16.5" r="1.5"/>
+            <circle cx="3" cy="12" r="1.5"/><circle cx="4.21" cy="7.5" r="1.5"/>
+            <circle cx="7.5" cy="4.21" r="1.5"/><circle cx="12" cy="3" r="1.5"/>
+            <circle cx="16.5" cy="4.21" r="1.5"/><circle cx="19.79" cy="7.5" r="1.5"/>
+            <circle cx="12" cy="12" r="1.1"/><circle cx="16" cy="12" r="1"/>
+            <circle cx="8" cy="12" r="1"/><circle cx="12" cy="8" r="1"/><circle cx="12" cy="16" r="1"/>
+          </svg>
+          <span class="brand-company"><span data-text="COMPANY_NAME"></span><sup class="brand-tm" data-text="TRADEMARK_SYMBOL"></sup></span>
+        </a>
+        <ul class="footer-links" data-aria="FOOTER_LINKS_LABEL">
+          <li><a href="#terms" data-text="FOOTER_TERMS"></a></li>
+          <li><a href="#privacy" data-text="FOOTER_PRIVACY"></a></li>
+          <li><a href="#accessibility" data-text="FOOTER_ACCESSIBILITY"></a></li>
+        </ul>
+      </div>
+      <p class="footer-copyright" id="footer-copyright"></p>
+    </footer>
+  </div>
+
+  <!-- Layout for one ticket group card. app.js copies it once per group. -->
+  <template id="group-template">
+    <section class="card group-card">
+      <p class="eyebrow eyebrow-muted" data-role="group-progress"></p>
+      <h2 class="card-title" data-role="group-name"></h2>
+      <div class="worklist" data-role="group-rows"></div>
+    </section>
+  </template>
+
+  <!-- Layout for one ticket row. app.js copies it once per ticket. -->
+  <template id="ticket-row-template">
+    <div class="worklist-row">
+      <label class="field field-title">
+        <span class="field-label" data-text="TICKET_FIELD_LABEL"></span>
+        <input class="input" type="text" data-field="title">
+      </label>
+      <div class="worklist-hours">
+        <label class="field">
+          <span class="field-label" data-text="ESTIMATE_FIELD_LABEL"></span>
+          <input class="input input-hours" type="number" min="0" step="0.5" inputmode="decimal" data-field="estimate">
+        </label>
+        <label class="field">
+          <span class="field-label" data-text="LOGGED_FIELD_LABEL"></span>
+          <input class="input input-hours" type="number" min="0" step="0.5" inputmode="decimal" data-field="hours">
+        </label>
+      </div>
+    </div>
+  </template>
+
+  <!-- content.js must load before app.js, because app.js reads its text. -->
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
